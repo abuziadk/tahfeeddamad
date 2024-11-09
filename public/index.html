@@ -1,0 +1,30 @@
+<!-- public/upload.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>رفع الملفات</title>
+</head>
+<body>
+    <form id="uploadForm">
+        <input type="file" id="pdfFile" name="file" accept="application/pdf" required>
+        <button type="submit">رفع الملف</button>
+    </form>
+    <div id="message"></div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('pdfFile', document.getElementById('pdfFile').files[0]);
+
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.text();
+            document.getElementById('message').textContent = result;
+        });
+    </script>
+</body>
+</html>
