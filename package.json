@@ -1,5 +1,4 @@
 {
-  "name": "student_results_ap{
   "name": "student-results-app",
   "version": "1.0.0",
   "description": "A web app for uploading and querying student results.",
