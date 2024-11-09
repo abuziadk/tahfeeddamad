@@ -1,5 +1,24 @@
 {
-  "name": "student_results_app",
+  "name": "student_results_ap{
+  "name": "student-results-app",
+  "version": "1.0.0",
+  "description": "A web app for uploading and querying student results.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "multer": "^1.4.4",
+    "body-parser": "^1.19.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "license": "MIT"
+}
+p",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
