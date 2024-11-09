@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رفع ملف النتائج</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="file"] {
+            display: block;
+            margin: 20px auto;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #message {
+            margin-top: 15px;
+            font-size: 1em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>رفع ملف النتائج</h1>
+        <input type="file" id="fileInput" accept=".pdf" />
+        <button onclick="uploadFile()">رفع الملف</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            const message = document.getElementById('message');
+
+            if (!file) {
+                message.textContent = 'يرجى اختيار ملف لرفعه.';
+                return;
+            }
+
+            // تحقق من أن الملف هو PDF
+            if (file.type !== 'application/pdf') {
+                message.textContent = 'يرجى اختيار ملف PDF.';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // إرسال الملف عبر AJAX
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                message.textContent = data;
+            })
+            .catch(error => {
+                message.textContent = 'حدث خطأ أثناء رفع الملف.';
+                console.error(error);
+            });
+        }
+    </script>
+</body>
+</html>
