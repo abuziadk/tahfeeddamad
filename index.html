@@ -1,312 +1,187 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>خريطة صناديق حفظ المصاحف القديمة - جمعية العناية بالمصحف الشريف بمنطقة جازان</title>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --green-dark:#004d40;
+    --green:#00796b;
+    --green-grad-start:#a5d6a7;
+    --green-grad-end:#1b5e20;
+    --gray-grad-start:#f7f7f7;
+    --gray-grad-end:#eceff1;
+  }
+  html,body{margin:0;padding:0;font-family:'Cairo',sans-serif;}
+  body{background: linear-gradient(180deg, var(--gray-grad-start), var(--gray-grad-end)); min-height:100vh;}
+  .header{
+    background: linear-gradient(135deg, var(--green-grad-start), var(--green-grad-end));
+    color:#fff; padding:16px 12px;
+  }
+  .header .wrap{max-width:1100px;margin:0 auto; display:flex; align-items:center; gap:16px;}
+  .header img{width:110px; height:auto; object-fit:contain;}
+  .title-box{display:flex; flex-direction:column; gap:4px}
+  .title-box h1{margin:0;font-size:1.4rem;letter-spacing:.2px}
+  .title-box p{margin:0;opacity:.9}
+  .navbar{
+    position: sticky; top:0; z-index:1000;
+    background: rgba(0, 77, 64, 0.95);
+    backdrop-filter: saturate(150%) blur(3px);
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  .nav-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+  .nav-wrap a{
+    color:#fff; text-decoration:none; padding:12px 14px; display:block; font-weight:700; border-radius:8px; transition:.2s;
+  }
+  .nav-wrap a:hover{background:#00695c}
+  .active{background:#00695c}
+  main{max-width:1100px;margin:10px auto; background:black; padding:24px; border-radius:14px; box-shadow:3 8px 18px rgba(1,0,0,.06)}
+  h2{color:#00695c;margin-top:0}
+  .footer{
+    margin-top:28px; background: var(--green-dark); color:#fff; padding:18px 12px;
+  }
+  .footer .wrap{max-width:1100px;margin:0 auto; display:grid; gap:10px}
+  .quick-links a{color:#fff; text-decoration:none; margin:0 8px}
+  .contact-line{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+  .contact-line a{color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:6px}
+  .contact-line i{font-size:1.1rem}
+</style>
 
-  <style>
-    :root{
-      --green:#0B6E4F;
-      --green2:#0A5F45;
-      --bg-gradient: linear-gradient(135deg,#0B6E4F,#0A5F45);
-      --card:#ffffff;
-      --text:#111;
-      --muted:#444;
-      --shadow:0 10px 26px rgba(0,0,0,.15);
-      --radius:16px;
-    }
-
-    body{
-      margin:0;
-      font-family:"Tajawal","Cairo",system-ui,-apple-system,Arial,sans-serif;
-      background: var(--bg-gradient);
-      color:var(--text);
-    }
-
-    /* ================= BANNER ================= */
-    .image-header.full{
-      width:100%;
-      background: var(--bg-gradient);
-      padding:14px;
-      box-sizing:border-box;
-    }
-
-    .image-header-inner{
-      max-width:1200px;
-      margin:auto;
-      border-radius:var(--radius);
-      overflow:hidden;
-      background:#0B6E4F;
-      box-shadow:var(--shadow);
-    }
-
-    .image-header-inner img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-
-    /* ================= LAYOUT ================= */
-    .wrap{
-      padding:14px;
-      max-width:1200px;
-      margin:auto;
-      display:grid;
-      grid-template-columns:360px 1fr;
-      gap:14px;
-    }
-
-    @media (max-width:950px){
-      .wrap{ grid-template-columns:1fr; }
-    }
-
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .panel{ padding:12px; }
-
-    .panel h2{
-      margin:0 0 10px;
-      font-size:16px;
-      color:var(--green);
-      font-weight:900;
-    }
-
-    .search{
-      width:100%;
-      padding:10px 12px;
-      border:1px solid #ddd;
-      border-radius:12px;
-      font-size:14px;
-      margin-bottom:10px;
-      outline:none;
-      box-sizing:border-box;
-    }
-
-    .list{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      max-height:62vh;
-      overflow:auto;
-    }
-
-    .item{
-      border:1px solid #e7e7e7;
-      border-radius:14px;
-      padding:10px;
-      background:#fff;
-    }
-
-    .item .name{
-      font-weight:900;
-      font-size:14px;
-      margin-bottom:4px;
-    }
-
-    .item .meta{
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:8px;
-    }
-
-    .actions{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:8px 10px;
-      border-radius:12px;
-      background:var(--green);
-      color:#fff;
-      font-size:13px;
-      font-weight:900;
-      text-decoration:none;
-      border:1px solid var(--green);
-    }
-
-    .btn.secondary{
-      background:#fff;
-      color:var(--green);
-    }
-
-    .map{
-      position:relative;
-      width:100%;
-      padding-top:62%;
-      background:#eee;
-      border-radius:var(--radius);
-      overflow:hidden;
-    }
-
-    .map iframe{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      border:0;
-    }
-
-    /* ================= FOOTER ================= */
-    footer{
-      max-width:1200px;
-      margin:14px auto 80px;
-      padding:14px;
-      background: rgba(255,255,255,.12);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      text-align:center;
-      font-size:13px;
-      color:#fff;
-      backdrop-filter: blur(6px);
-    }
-
-    footer a{
-      color:#fff;
-      font-weight:900;
-      text-decoration:none;
-      border-bottom:1px dashed rgba(255,255,255,.6);
-    }
-
-    /* ================= WHATSAPP BUTTON ================= */
-    .whatsapp-float{
-      position:fixed;
-      bottom:18px;
-      left:18px;
-      width:56px;
-      height:56px;
-      background:#25D366;
-      color:#fff;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:28px;
-      text-decoration:none;
-      box-shadow:0 8px 20px rgba(0,0,0,.25);
-      z-index:999;
-      transition: transform .2s ease;
-    }
-
-    .whatsapp-float:hover{
-      transform: scale(1.08);
-    }
-  </style>
+<title>الصفحة الرئيسية - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</title>
 </head>
-
 <body>
 
-<!-- ===== BANNER ===== -->
-<div class="image-header full">
-  <div class="image-header-inner">
-    <img src="header-image.png" alt="جمعية العناية بالمصحف الشريف بمنطقة جازان">
+<div class="header">
+  <div class="wrap">
+    <img src="images/bg2.png" alt="شعار المدرسة">
+    <div class="title-box">
+      <h1>مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</h1>
+      <p>بوابتك الإلكترونية لمتابعة كل جديد</p>
+    </div>
+    </div>
+      </div>
+<main>
+  <h2>مرحبًا بكم</h2>
+<nav class="navbar">
+  <div class="nav-wrap">
+    <a class="active" href="index.html">الرئيسية</a>
+    <a class="" href="grades.html">الدرجات</a>
+    <a class="" href="about.html">عن المدرسة</a>
+    <a class="" href="activities.html">الأنشطة</a>
+    <a class="" href="gallery.html">معرض الصور</a>
+    <a class="" href="contact.html">اتصل بنا</a>
   </div>
-</div>
+</nav>
 
-<div class="wrap">
+</main>
 
-  <!-- القائمة -->
-  <aside class="card">
-    <div class="panel">
-      <h2>المحافظات والمواقع</h2>
-      <input id="q" class="search" type="search" placeholder="ابحث باسم المحافظة…" />
-      <div id="list" class="list"></div>
+<footer class="footer">
+  <div class="wrap">
+    <div class="quick-links">
+      روابط سريعة:
+      <a href="index.html">الرئيسية</a> |
+      <a href="grades.html">الدرجات</a> |
+      <a href="contact.html">اتصل بنا</a>
     </div>
-  </aside>
-
-  <!-- الخريطة -->
-  <main class="card">
-    <div class="map">
-      <iframe
-        src="https://www.google.com/maps/d/u/0/embed?mid=1QE5-MUYNlbb9j7j3kiTLEBJb1MlTVNc"
-        loading="lazy"
-        allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+    <div class="contact-line">
+      <span>👨‍💻 البرمجة والتصميم: م. خليل أبوحوزه</span>
+      <a href="https://wa.me/966548884252" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a href="https://www.facebook.com/khalil.abuhozah" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i> فيسبوك</a>
+      <a href="https://x.com/abuhawzah" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i> X</a>
     </div>
-  </main>
-
-</div>
-
-<footer>
-  بإشراف <strong>جمعية العناية بالمصحف الشريف بمنطقة جازان</strong><br>
-  للتواصل: <a href="tel:0580756777">0580756777</a>
+    <div>جميع الحقوق محفوظة &copy; 2024 - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</div>
+  </div>
 </footer>
-
-<!-- زر واتساب -->
-<a class="whatsapp-float"
-   href="https://wa.me/966580756777"
-   target="_blank"
-   aria-label="تواصل عبر واتساب">
-  <svg viewBox="0 0 32 32" width="28" height="28" fill="white" aria-hidden="true">
-    <path d="M19.11 17.33c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.18-1.34-.81-.72-1.35-1.61-1.51-1.88-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29s.98 2.66 1.11 2.84c.14.18 1.93 2.95 4.68 4.13.65.28 1.15.45 1.54.58.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
-    <path d="M16 2.67C8.64 2.67 2.67 8.64 2.67 16c0 2.59.77 5.02 2.1 7.06L2 30l7.15-2.75A13.25 13.25 0 0016 29.33c7.36 0 13.33-5.97 13.33-13.33C29.33 8.64 23.36 2.67 16 2.67zm0 24c-2.31 0-4.46-.63-6.32-1.73l-.45-.26-4.24 1.63 1.64-4.13-.29-.43a10.63 10.63 0 01-1.78-5.9C4.56 9.97 9.97 4.56 16 4.56S27.44 9.97 27.44 16 22.03 27.44 16 27.44z"/>
-  </svg>
-</a>
-
-
+<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 <script>
-   const places = [
-    { name: "صندوق حفظ المصاحف القديمة – جيزان", lat: 16.899836, lng: 42.552330, note: "بجوار جامع الأميرة صيتة" },
-    { name: "صندوق حفظ المصاحف القديمة – صبيا", lat: 17.1589463, lng: 42.6261863, note: "بجوار جامع الدرسي بمدينة صبيا" },
-    { name: "صندوق حفظ المصاحف القديمة – ضمد", lat: 17.112385, lng: 42.777718, note: "حي الزاهر بجوار مسجد الهاتف شرق البنك الأهلي" },
-    { name: "صندوق حفظ المصاحف القديمة – صامطة", lat: 16.599133, lng: 42.935261, note: "بجوار جامع العليا حي السنيد" },
-    { name: "صندوق حفظ المصاحف القديمة – أحد المسارحة", lat: 16.702896, lng: 42.954578, note: "بجوار جامع الدحمان" },
-    { name: "صندوق حفظ المصاحف القديمة – العارضة", lat: 17.0362635, lng: 43.0862932, note: "بجوار جامع الراجحي" },
-    { name: "صندوق حفظ المصاحف القديمة – العيدابي", lat: 17.2331150, lng: 42.9401466, note: "بجوار جامع أبو بكر الصديق" },
-    { name: "صندوق حفظ المصاحف القديمة – بيش", lat: 17.370344, lng: 42.539795, note: "بجوار جامع الراجحي بمدينة بيش" },
-    { name: "صندوق حفظ المصاحف القديمة – أبو عريش", lat: 16.967049, lng: 42.837952, note: "بجوار جامع الميرابي" },
-    { name: "صندوق حفظ المصاحف القديمة – فيفا", lat: 17.2551397, lng: 43.0960266, note: "بجوار جامع أبو بكر الصديق بمدينة فيفا" },
-    { name: "صندوق حفظ المصاحف القديمة – الداير بني مالك", lat: 17.336403, lng: 43.137497, note: "بجوار جامع خادم الحرمين الشريفين" },
-    { name: "صندوق حفظ المصاحف القديمة – عيبان بلغازي", lat: 17.278406, lng: 43.050171, note: "بجوار جامع عيبان" },
-    { name: "صندوق حفظ المصاحف القديمة – الدرب", lat: 17.732662, lng: 42.249622, note: "بجوار جامع الأميرة الجوهرة" },
-    { name: "صندوق حفظ المصاحف القديمة – فرسان", lat: 16.701607, lng: 42.122436, note: "بجوار جامع الشيخ هادي الراجحي" },
-    { name: "صندوق حفظ المصاحف القديمة – الريث", lat: 17.61749939735447, lng: 42.8202943841584, note: "بجوار جامع الرحمة" },
-    { name: "صندوق حفظ المصاحف القديمة – هروب", lat: 17.446735, lng: 42.875393, note: "بجوار جامع حمزة بن عبدالمطلب" },
-    { name: "صندوق حفظ المصاحف القديمة – الطوال", lat: 16.528753, lng: 42.967049, note: "بجوار جامع الأوسط" },
-    { name: "صندوق حفظ المصاحف القديمة – الحرث", lat: 16.829000, lng: 42.955727, note: "إسكان الحصمة بجوار إدارة المساجد" }
-  ];
 
-  const listEl = document.getElementById("list");
-  const qEl = document.getElementById("q");
+(() => {
+  
 
-  function mapsPlaceLink(lat,lng){
-    return `https://maps.google.com/?q=${lat},${lng}`;
+ camera.position.set(0, 0, 3.5);
+camera.fov = 50;                // زاوية الرؤية (كبّرها لتوسيع المشهد)
+camera.updateProjectionMatrix();
+
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  // إضاءة ولون متناسق مع هوية الموقع
+  const light = new THREE.DirectionalLight(0xffffff, 1.1);
+  light.position.set(2, 3, 4);
+  scene.add(light);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+
+  // مجسم 3D خفيف (عُقدة تورس) بلون أخضر المدرسة
+  const geo = new THREE.SphereGeometry(0.9, 94, 94);
+  const mat = new THREE.MeshStandardMaterial({ color: 0x00796b, metalness: 0.2, roughness: 0.25 });
+  const mesh = new THREE.Mesh(geo, mat);
+  mat.normalMap   = new THREE.TextureLoader().load('images/bg2.jpg');
+
+  mat.roughnessMap= new THREE.TextureLoader().load('images/bg.jpg');
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  scene.add(mesh);
+
+  // نقاط خلفية خفيفة (نجوم بسيطة)
+  const starsGeo = new THREE.BufferGeometry();
+  const starCount = 250;
+  const positions = new Float32Array(starCount * 3);
+  for (let i=0; i<starCount*3; i++) positions[i] = (Math.random()-0.5)*12;
+  starsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const stars = new THREE.Points(starsGeo, new THREE.PointsMaterial({ size: 0.015, color: 0xffffff }));
+  scene.add(stars);
+  
+  // تحريك بالفأرة/اللمس
+  let targetX = 0, targetY = 0;
+  function onMove(x, y) {
+    const rect = canvas.getBoundingClientRect();
+    const nx = (x - rect.left) / rect.width  - 0.5;
+    const ny = (y - rect.top)  / rect.height - 0.5;
+    targetX = nx * 0.8;
+    targetY = ny * 0.5;
   }
-  function mapsDirectionsLink(lat,lng){
-    return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+  window.addEventListener('mousemove', e => onMove(e.clientX, e.clientY), { passive:true });
+  window.addEventListener('touchmove', e => {
+    const t = e.touches[0]; if (t) onMove(t.clientX, t.clientY);
+  }, { passive:true });
+
+  // ريسايز
+  function resizeRendererToDisplaySize() {
+    const parent = canvas.parentElement;
+    const width = parent.clientWidth;
+    const height = parent.clientHeight;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+      renderer.setSize(width, height, false);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    }
+    return needResize;
   }
 
-  function render(filterText=""){
-    listEl.innerHTML="";
-    const ft = filterText.trim().toLowerCase();
-    const results = places.filter(p =>
-      !ft || p.name.toLowerCase().includes(ft) || (p.note||"").toLowerCase().includes(ft)
-    );
-
-    results.forEach(p=>{
-      const item=document.createElement("div");
-      item.className="item";
-      item.innerHTML=`
-        <p class="name">${p.name}</p>
-        <p class="meta">${p.note}</p>
-        <div class="actions">
-          <a class="btn" target="_blank" href="${mapsDirectionsLink(p.lat,p.lng)}">الاتجاهات</a>
-          <a class="btn secondary" target="_blank" href="${mapsPlaceLink(p.lat,p.lng)}">فتح الموقع</a>
-        </div>`;
-      listEl.appendChild(item);
-    });
+  // أنيميشن
+  let rafId;
+  function render() {
+    resizeRendererToDisplaySize();
+    mesh.rotation.x += 0.104 + (targetY - mesh.rotation.x) * 0.02;
+    mesh.rotation.y += 0.006 + (targetX - mesh.rotation.y) * 0.02;
+    stars.rotation.y += 0.0008;
+    renderer.render(scene, camera);
+    rafId = requestAnimationFrame(render);
   }
 
-  qEl.addEventListener("input",e=>render(e.target.value));
+  // إيقاف أثناء التبويب المخفي لتوفير البطارية
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) cancelAnimationFrame(rafId);
+    else render();
+  });
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   render();
+})();
+
 </script>
 
 </body>
