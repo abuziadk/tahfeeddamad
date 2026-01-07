@@ -1,102 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
+<meta name="description" content="مدرسة تحفيظ ضمد الإبتدائية والمتوسطة – بوابتك الإلكترونية.">
+<meta name="keywords" content="تحفيظ القرآن, مدرسة ضمد, تعليم جازان">
+<meta name="author" content="مدرسة تحفيظ ضمد">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-  :root {
-    --green-dark:#004d40;
-    --green:#00796b;
-    --green-grad-start:#a5d6a7;
-    --green-grad-end:#1b5e20;
-    --gray-grad-start:#f7f7f7;
-    --gray-grad-end:#eceff1;
-  }
-  html,body{margin:0;padding:0;font-family:'Cairo',sans-serif;}
-  body{background: linear-gradient(180deg, var(--gray-grad-start), var(--gray-grad-end)); min-height:100vh;}
-  .header{
-    background: linear-gradient(135deg, var(--green-grad-start), var(--green-grad-end));
-    color:#fff; padding:16px 12px;
-  }
-  .header .wrap{max-width:1100px;margin:0 auto; display:flex; align-items:center; gap:16px;}
-  .header img{width:110px; height:auto; object-fit:contain;}
-  .title-box{display:flex; flex-direction:column; gap:4px}
-  .title-box h1{margin:0;font-size:1.4rem;letter-spacing:.2px}
-  .title-box p{margin:0;opacity:.9}
-  .navbar{
-    position: sticky; top:0; z-index:1000;
-    background: rgba(0, 77, 64, 0.95);
-    backdrop-filter: saturate(150%) blur(3px);
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-  }
-  .nav-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
-  .nav-wrap a{
-    color:#fff; text-decoration:none; padding:12px 14px; display:block; font-weight:700; border-radius:8px; transition:.2s;
-  }
-  .nav-wrap a:hover{background:#00695c}
-  .active{background:#00695c}
-  main{max-width:1100px;margin:22px auto; background:#fff; padding:24px; border-radius:14px; box-shadow:0 8px 18px rgba(0,0,0,.06)}
-  h2{color:#00695c;margin-top:0}
-  .footer{
-    margin-top:28px; background: var(--green-dark); color:#fff; padding:18px 12px;
-  }
-  .footer .wrap{max-width:1100px;margin:0 auto; display:grid; gap:10px}
-  .quick-links a{color:#fff; text-decoration:none; margin:0 8px}
-  .contact-line{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
-  .contact-line a{color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:6px}
-  .contact-line i{font-size:1.1rem}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>عن المدرسة - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</title>
+  <title>عن المدرسة - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="header">
-  <div class="wrap">
-    <img src="images/bg2.png" alt="شعار المدرسة">
-    <div class="title-box">
-      <h1>مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</h1>
-      <p>بوابتك الإلكترونية لمتابعة كل جديد</p>
-    </div>
+<!-- ===== BANNER ===== -->
+<div class="image-header">
+  <div class="image-header-inner">
+    <img src="images/banner.png" alt="مدرسة تحفيظ ضمد الإبتدائية والمتوسطة">
   </div>
 </div>
+<div class="breadcrumb">
+  <a href="index.html">الرئيسية</a> › عن المدرسة
+</div>
+<!-- ===== NAVBAR ===== -->
 <nav class="navbar">
-  <div class="nav-wrap">
-    <a class="" href="index.html">الرئيسية</a>
-    <a class="" href="grades.html">الدرجات</a>
-    <a class="active" href="about.html">عن المدرسة</a>
-    <a class="" href="activities.html">الأنشطة</a>
-    <a class="" href="gallery.html">معرض الصور</a>
-    <a class="" href="contact.html">اتصل بنا</a>
-  </div>
+  <ul>
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="grades.html">الدرجات</a></li>
+    <li><a class="active" href="about.html">عن المدرسة</a></li>
+    <li><a href="activities.html">الأنشطة</a></li>
+    <li><a href="gallery.html">معرض الصور</a></li>
+    <li><a href="contact.html">اتصل بنا</a></li>
+  </ul>
 </nav>
 
-<main>
-  <h2>عن المدرسة</h2>
-  <p>مدرسة تحفيظ ضمد الإبتدائية والمتوسطة تسعى لتقديم تعليم متميز يرسخ القيم ويواكب التطور التقني والتربوي، في بيئة تعليمية جاذبة ومحفزة على الإبداع.</p>
-  <p>نهدف لإعداد جيل واعٍ يمتلك المهارات الأساسية في التعلم والحياة، عبر كوادر تعليمية مؤهلة وأنشطة متنوعة.</p>
-</main>
+<!-- ===== CONTENT ===== -->
+<div class="wrap">
+  <div class="card">
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="quick-links">
-      روابط سريعة:
-      <a href="index.html">الرئيسية</a> |
-      <a href="grades.html">الدرجات</a> |
-      <a href="contact.html">اتصل بنا</a>
-    </div>
-    <div class="contact-line">
-      <span>👨‍💻 البرمجة والتصميم: م. خليل أبوحوزه</span>
-      <a href="https://wa.me/966548884252" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i> واتساب</a>
-      <a href="https://www.facebook.com/khalil.abuhozah" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i> فيسبوك</a>
-      <a href="https://x.com/abuhawzah" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i> X</a>
-    </div>
-    <div>جميع الحقوق محفوظة &copy; 2024 - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</div>
+    <h2>عن المدرسة</h2>
+
+    <p>
+      مدرسة تحفيظ ضمد الإبتدائية والمتوسطة هي صرح تعليمي يُعنى بتعليم كتاب الله
+      الكريم وغرس القيم الإسلامية، مع الاهتمام بتنمية مهارات الطلاب العلمية
+      والسلوكية في بيئة تعليمية محفّزة.
+    </p>
+
+    <h3>رؤيتنا</h3>
+    <p>
+      الريادة في تعليم القرآن الكريم وبناء جيل واعٍ متمسك بدينه وقيمه.
+    </p>
+
+    <h3>رسالتنا</h3>
+    <p>
+      تقديم تعليم نوعي يجمع بين حفظ القرآن الكريم والتعليم العام، باستخدام
+      أساليب تربوية حديثة وشراكة فاعلة مع الأسرة والمجتمع.
+    </p>
+
+    <h3>أهدافنا</h3>
+    <ul>
+      <li>تحفيظ القرآن الكريم وإتقان تلاوته.</li>
+      <li>تنمية القيم الإسلامية والسلوك الإيجابي.</li>
+      <li>رفع المستوى التحصيلي للطلاب.</li>
+      <li>تعزيز الشراكة مع أولياء الأمور.</li>
+    </ul>
+
   </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  جميع الحقوق محفوظة © 2024<br>
+  مدرسة تحفيظ ضمد الإبتدائية والمتوسطة
 </footer>
+
+<!-- ===== WHATSAPP FLOAT ===== -->
+<a class="whatsapp-float"
+   href="https://wa.me/966548884252"
+   target="_blank"
+   aria-label="تواصل عبر واتساب">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
 </body>
 </html>
