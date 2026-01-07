@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --green-dark:#004d40;
+    --green:#00796b;
+    --green-grad-start:#a5d6a7;
+    --green-grad-end:#1b5e20;
+    --gray-grad-start:#f7f7f7;
+    --gray-grad-end:#eceff1;
+  }
+  html,body{margin:0;padding:0;font-family:'Cairo',sans-serif;}
+  body{background: linear-gradient(180deg, var(--gray-grad-start), var(--gray-grad-end)); min-height:100vh;}
+  .header{
+    background: linear-gradient(135deg, var(--green-grad-start), var(--green-grad-end));
+    color:#fff; padding:16px 12px;
+  }
+  .header .wrap{max-width:1100px;margin:0 auto; display:flex; align-items:center; gap:16px;}
+  .header img{width:110px; height:auto; object-fit:contain;}
+  .title-box{display:flex; flex-direction:column; gap:4px}
+  .title-box h1{margin:0;font-size:1.4rem;letter-spacing:.2px}
+  .title-box p{margin:0;opacity:.9}
+  .navbar{
+    position: sticky; top:0; z-index:1000;
+    background: rgba(0, 77, 64, 0.95);
+    backdrop-filter: saturate(150%) blur(3px);
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  .nav-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+  .nav-wrap a{
+    color:#fff; text-decoration:none; padding:12px 14px; display:block; font-weight:700; border-radius:8px; transition:.2s;
+  }
+  .nav-wrap a:hover{background:#00695c}
+  .active{background:#00695c}
+  main{max-width:1100px;margin:22px auto; background:#fff; padding:24px; border-radius:14px; box-shadow:0 8px 18px rgba(0,0,0,.06)}
+  h2{color:#00695c;margin-top:0}
+  .footer{
+    margin-top:28px; background: var(--green-dark); color:#fff; padding:18px 12px;
+  }
+  .footer .wrap{max-width:1100px;margin:0 auto; display:grid; gap:10px}
+  .quick-links a{color:#fff; text-decoration:none; margin:0 8px}
+  .contact-line{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+  .contact-line a{color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:6px}
+  .contact-line i{font-size:1.1rem}
+</style>
+
+<title>طاقم المعلمين - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</title>
+<style>
+  .teacher{padding:12px 0; border-bottom:1px solid #eee}
+  .teacher h3{margin:0;color:#00796b}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="wrap">
+    <img src="images/bg2.png" alt="شعار المدرسة">
+    <div class="title-box">
+      <h1>مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</h1>
+      <p>بوابتك الإلكترونية لمتابعة كل جديد</p>
+    </div>
+  </div>
+</div>
+<nav class="navbar">
+  <div class="nav-wrap">
+    <a class="" href="index.html">الرئيسية</a>
+    <a class="" href="grades.html">الدرجات</a>
+    <a class="" href="about.html">عن المدرسة</a>
+    <a class="active" href="teachers.html">المعلمين</a>
+    <a class="" href="activities.html">الأنشطة</a>
+    <a class="" href="gallery.html">معرض الصور</a>
+    <a class="" href="contact.html">اتصل بنا</a>
+  </div>
+</nav>
+
+<main>
+  <h2>طاقم المعلمين</h2>
+  <div class="teacher">
+    <h3>أ. محمد الغامدي</h3>
+    <p>معلم رياضيات - خبرة 12 سنة.</p>
+  </div>
+  <div class="teacher">
+    <h3>أ. فاطمة الزهراني</h3>
+    <p>معلمة علوم - ماجستير تربية.</p>
+  </div>
+  <div class="teacher">
+    <h3>أ. أحمد الشهري</h3>
+    <p>معلم حاسب - مهتم بالتقنيات التعليمية.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="quick-links">
+      روابط سريعة:
+      <a href="index.html">الرئيسية</a> |
+      <a href="grades.html">الدرجات</a> |
+      <a href="contact.html">اتصل بنا</a>
+    </div>
+    <div class="contact-line">
+      <span>👨‍💻 البرمجة والتصميم: م. خليل أبوحوزه</span>
+      <a href="https://wa.me/966548884252" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a href="https://www.facebook.com/khalil.abuhozah" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i> فيسبوك</a>
+      <a href="https://x.com/abuhawzah" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i> X</a>
+    </div>
+    <div>جميع الحقوق محفوظة &copy; 2024 - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ===== Social Media Preview ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="خريطة صناديق حفظ المصاحف القديمة – منطقة جازان">
+  <meta property="og:description" content="اعثر على أقرب صندوق لحفظ المصاحف القديمة التابعة لجمعية العناية بالمصحف الشريف بمنطقة جازان.">
+  <meta property="og:image" content="https://abuziadk.github.io/schoolmain/Box.jpg">
+  <meta property="og:url" content="https://abuziadk.github.io/schoolmain/">
+  <meta property="og:site_name" content="جمعية العناية بالمصحف الشريف – جازان">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="خريطة صناديق حفظ المصاحف القديمة – منطقة جازان">
+  <meta name="twitter:description" content="خريطة تفاعلية لمواقع صناديق حفظ المصاحف القديمة في منطقة جازان.">
+  <meta name="twitter:image" content="https://abuziadk.github.io/schoolmain/Box.jpg">
+
+  <title>خريطة صناديق حفظ المصاحف القديمة – منطقة جازان</title>
+
+  <style>
+    :root{
+      --green:#0B6E4F;
+      --green2:#0A5F45;
+      --bg:#f6f7f8;
+      --card:#fff;
+      --text:#111;
+      --muted:#444;
+      --shadow:0 10px 26px rgba(0,0,0,.10);
+      --shadow2:0 8px 22px rgba(0,0,0,.18);
+      --radius:16px;
+    }
+    body{
+      margin:0;
+      font-family:"Tajawal","Cairo",system-ui,-apple-system,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* ===== Header ===== */
+    header{
+      background:
+        radial-gradient(900px 320px at 20% 0%, rgba(255,255,255,.16), transparent 60%),
+        linear-gradient(135deg,var(--green),var(--green2));
+      color:#fff;
+      border-bottom:1px solid rgba(255,255,255,.18);
+    }
+    .header-inner{
+      max-width:1200px;
+      margin:auto;
+      padding:12px 14px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .media-card{
+      width:72px;height:72px;
+      border-radius:16px;
+      background:#fff;
+      overflow:hidden;
+      box-shadow:var(--shadow2);
+      display:flex;align-items:center;justify-content:center;
+      flex:0 0 auto;
+    }
+    .media-card img{width:100%;height:100%;object-fit:cover;}
+    .logo img{object-fit:contain;padding:8px;}
+    .brand{flex:1;min-width:0;}
+    .badge{
+      display:inline-block;
+      padding:5px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.25);
+      font-size:12px;font-weight:800;margin-bottom:6px;
+    }
+    h1{margin:0 0 4px;font-size:17px;font-weight:900;line-height:1.35;}
+    .sub{margin:0;font-size:13px;line-height:1.6;opacity:.95;}
+    .contact{margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;}
+    .pill{
+      padding:6px 10px;border-radius:12px;
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.25);
+      font-size:12px;font-weight:800;
+    }
+    .pill a{color:#fff;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.6);}
+    @media (max-width:520px){
+      .header-inner{padding:10px 12px;align-items:flex-start;}
+      .media-card{width:58px;height:58px;}
+      h1{font-size:15px;}
+      .sub{font-size:12.5px;}
+      .badge,.pill{font-size:11px;}
+    }
+
+    /* ===== Layout ===== */
+    .wrap{
+      padding:14px;max-width:1200px;margin:auto;
+      display:grid;grid-template-columns:360px 1fr;gap:12px;
+    }
+    @media (max-width:950px){.wrap{grid-template-columns:1fr;}}
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .panel{padding:12px;}
+    .panel h2{margin:0 0 10px;font-size:16px;color:var(--green);font-weight:900;}
+    .search{
+      width:100%;padding:10px 12px;border:1px solid #ddd;
+      border-radius:12px;font-size:14px;margin-bottom:10px;
+    }
+    .list{display:flex;flex-direction:column;gap:10px;max-height:62vh;overflow:auto;}
+    .item{border:1px solid #e7e7e7;border-radius:14px;padding:10px;}
+    .item .name{font-weight:900;font-size:14px;margin-bottom:4px;}
+    .item .meta{font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;}
+    .btn{
+      padding:8px 10px;border-radius:12px;
+      background:var(--green);color:#fff;font-size:13px;
+      font-weight:900;text-decoration:none;border:1px solid var(--green);
+    }
+    .btn.secondary{background:#fff;color:var(--green);}
+    .map{position:relative;width:100%;padding-top:62%;background:#eee;}
+    .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+    footer{margin:14px auto;text-align:center;font-size:13px;color:#444;}
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <!-- يسار: صورة الصندوق -->
+    <div class="media-card">
+      <img src="Box.jpg" alt="صندوق جمع المصاحف">
+    </div>
+
+    <!-- وسط: النص -->
+    <div class="brand">
+      <span class="badge">#احفظه_معنا</span>
+      <h1>خريطة صناديق حفظ المصاحف القديمة – منطقة جازان</h1>
+      <p class="sub">ابحث عن أقرب صندوق، ثم اضغط “الاتجاهات” للوصول بسهولة.</p>
+      <div class="contact">
+        <span class="pill">جمعية العناية بالمصحف الشريف – جازان</span>
+        <span class="pill">📞 <a href="tel:0580756777">0580756777</a></span>
+      </div>
+    </div>
+
+    <!-- يمين: شعار الجمعية -->
+    <div class="media-card logo">
+      <img src="mushaf.png" alt="شعار جمعية العناية بالمصحف الشريف">
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="card">
+    <div class="panel">
+      <h2>المحافظات والمواقع</h2>
+      <input id="q" class="search" placeholder="ابحث باسم المحافظة…" />
+      <div id="list" class="list"></div>
+    </div>
+  </aside>
+
+  <main class="card">
+    <div class="map">
+      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1QE5-MUYNlbb9j7j3kiTLEBJb1MlTVNc" loading="lazy"></iframe>
+    </div>
+  </main>
+</div>
+
+<footer>
+  بإشراف جمعية العناية بالمصحف الشريف بمنطقة جازان
+</footer>
+
+<script>
+  const places = [
+    {name:"صندوق حفظ المصاحف القديمة – جيزان",lat:16.899836,lng:42.55233,note:"بجوار جامع الأميرة صيتة"},
+    {name:"صندوق حفظ المصاحف القديمة – صبيا",lat:17.1589463,lng:42.6261863,note:"بجوار جامع الدرسي"},
+    {name:"صندوق حفظ المصاحف القديمة – ضمد",lat:17.112385,lng:42.777718,note:"حي الزاهر"},
+    {name:"صندوق حفظ المصاحف القديمة – صامطة",lat:16.599133,lng:42.935261,note:"حي السنيد"},
+    {name:"صندوق حفظ المصاحف القديمة – أحد المسارحة",lat:16.702896,lng:42.954578,note:"بجوار جامع الدحمان"},
+    {name:"صندوق حفظ المصاحف القديمة – فرسان",lat:16.697,lng:41.9815,note:"قريب من جامع الشيخ هادي الراجحي"},
+    {name:"صندوق حفظ المصاحف القديمة – الريث",lat:17.6169984,lng:42.8296643,note:"قريب من جامع الرحمة"}
+  ];
+
+  const listEl=document.getElementById("list");
+  const q=document.getElementById("q");
+  const place=(lat,lng)=>https://maps.google.com/?q=${lat},${lng};
+  const dir=(lat,lng)=>https://www.google.com/maps/dir/?api=1&destination=${lat},${lng};
+
+  function render(v=""){
+    listEl.innerHTML="";
+    const f=v.toLowerCase();
+    places.filter(p=>p.name.toLowerCase().includes(f)).forEach(p=>{
+      listEl.innerHTML+=`
+        <div class="item">
+          <div class="name">${p.name}</div>
+          <div class="meta">${p.note}</div>
+          <div class="actions">
+            <a class="btn" href="${dir(p.lat,p.lng)}" target="_blank">الاتجاهات</a>
+            <a class="btn secondary" href="${place(p.lat,p.lng)}" target="_blank">فتح الموقع</a>
+          </div>
+        </div>`;
+    });
+  }
+  q.oninput=e=>render(e.target.value);
+  render();
+</script>
+
+</body>
+</html>

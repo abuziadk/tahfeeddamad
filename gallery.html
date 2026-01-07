@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معرض الصور - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root{
+    --green-dark:#004d40; --green:#00796b;
+    --green-grad-start:#a5d6a7; --green-grad-end:#1b5e20;
+    --gray-grad-start:#f7f7f7; --gray-grad-end:#eceff1;
+  }
+  html,body{margin:0;padding:0;font-family:'Cairo',sans-serif}
+  body{background:linear-gradient(180deg,var(--gray-grad-start),var(--gray-grad-end));min-height:100vh}
+
+  /* Header */
+  .header{background:linear-gradient(135deg,var(--green-grad-start),var(--green-grad-end));color:#fff;padding:16px 12px}
+  .header .wrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px}
+  .header img{width:110px;height:auto;object-fit:contain}
+  .title-box{display:flex;flex-direction:column;gap:4px}
+  .title-box h1{margin:0;font-size:1.4rem}
+  .title-box p{margin:0;opacity:.9}
+
+  /* Navbar (sticky) */
+  .navbar{position:sticky;top:0;z-index:1000;background:rgba(0,77,64,.95);backdrop-filter:saturate(150%) blur(3px);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+  .nav-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+  .nav-wrap a{color:#fff;text-decoration:none;padding:12px 14px;border-radius:8px;font-weight:700}
+  .nav-wrap a:hover,.active{background:#00695c}
+
+  main{max-width:1100px;margin:22px auto;background:#fff;padding:24px;border-radius:14px;box-shadow:0 8px 18px rgba(0,0,0,.06)}
+  h2{color:#00695c;margin-top:0}
+
+  /* Filters */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
+  .filters button{border:1px solid #cfd8dc;background:#fafafa;padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:700}
+  .filters button.active{background:#00796b;color:#fff;border-color:#00796b}
+
+  /* Gallery grid */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media (max-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:460px){.grid{grid-template-columns:1fr}}
+
+  .card{position:relative;border-radius:12px;overflow:hidden;background:#f5f5f5;border:1px solid #e0e0e0;cursor:zoom-in}
+  .card img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .35s ease}
+  .card:hover img{transform:scale(1.06)}
+  .badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.55);color:#fff;font-size:.75rem;padding:5px 10px;border-radius:999px}
+  .overlay{position:absolute;inset:0;display:flex;align-items:end;justify-content:start;background:linear-gradient(180deg,transparent 55%, rgba(0,0,0,.55));opacity:0;transition:opacity .25s ease}
+  .card:hover .overlay{opacity:1}
+  .overlay span{color:#fff;padding:10px 12px;font-weight:700}
+
+  /* Lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:2000}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:92vw;max-height:82vh;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .lb-caption{color:#fff;margin-top:10px;text-align:center}
+  .lb-controls{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 14px}
+  .lb-btn{background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:10px;padding:10px 14px;cursor:pointer;backdrop-filter:blur(2px);font-size:1rem}
+  .lb-close{position:absolute;top:16px;left:16px}
+</style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="wrap">
+      <img src="images/bg2.png" alt="شعار المدرسة">
+      <div class="title-box">
+        <h1>مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</h1>
+        <p>بوابتك الإلكترونية لمتابعة كل جديد</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-wrap">
+      <a href="index.html">الرئيسية</a>
+      <a href="grades.html">الدرجات</a>
+      <a href="about.html">عن المدرسة</a>
+      <a href="activities.html">الأنشطة</a>
+      <a class="active" href="gallery.html">معرض الصور</a>
+      <a href="contact.html">اتصل بنا</a>
+    </div>
+  </nav>
+
+  <main>
+    <h2>معرض الصور</h2>
+    <!-- Filters -->
+    <div class="filters" id="filters">
+      <button class="active" data-filter="all">الكل</button>
+      <button data-filter="events">فعاليات</button>
+      <button data-filter="class">صفوف دراسية</button>
+      <button data-filter="awards">إنجازات</button>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid" id="grid">
+      <!-- استخدم صورك؛ هذه أمثلة بمسارات قابلة للتعديل -->
+      <figure class="card" data-cat="events">
+        <img loading="lazy" src="images/img2.jpeg" alt="حفل المدرسة">
+        <div class="badge">فعاليات</div>
+        <div class="overlay"><span>حفل المدرسة</span></div>
+      </figure>
+
+      <figure class="card" data-cat="class">
+        <img loading="lazy" src="images/img1.jpeg" alt="حصة علوم">
+        <div class="badge">صفوف</div>
+        <div class="overlay"><span>حصة علوم</span></div>
+      </figure>
+
+      <figure class="card" data-cat="awards">
+        <img loading="lazy" src="images/img1.jpeg" alt="تكريم المتفوقين">
+        <div class="badge">إنجازات</div>
+        <div class="overlay"><span>تكريم المتفوقين</span></div>
+      </figure>
+
+      <figure class="card" data-cat="events">
+        <img loading="lazy" src="images/img2.jpeg" alt="زيارة ميدانية">
+        <div class="badge">فعاليات</div>
+        <div class="overlay"><span>زيارة ميدانية</span></div>
+      </figure>
+
+      <figure class="card" data-cat="class">
+        <img loading="lazy" src="images/bg.jpeg" alt="مختبر حاسب">
+        <div class="badge">صفوف</div>
+        <div class="overlay"><span>مختبر الحاسب</span></div>
+      </figure>
+
+      <figure class="card" data-cat="awards">
+        <img loading="lazy" src="images/img2.jpeg" alt="مركز أول مسابقة">
+        <div class="badge">إنجازات</div>
+        <div class="overlay"><span>مركز أول في مسابقة</span></div>
+      </figure>
+    </div>
+  </main>
+
+  <!-- Footer (مختصر بروابط وتواصل) -->
+  <footer class="header" style="background:var(--green-dark);margin-top:28px">
+    <div class="wrap" style="display:block">
+      <div style="text-align:center;margin-bottom:8px">
+        <a href="index.html" style="color:#fff;text-decoration:none;margin:0 8px">الرئيسية</a> |
+        <a href="grades.html" style="color:#fff;text-decoration:none;margin:0 8px">الدرجات</a> |
+        <a href="contact.html" style="color:#fff;text-decoration:none;margin:0 8px">اتصل بنا</a>
+      </div>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <span>👨‍💻 البرمجة والتصميم: م. خليل أبوحوزه</span>
+        <a href="https://wa.me/966548884252" target="_blank" style="color:#fff"><i class="fab fa-whatsapp"></i> واتساب</a>
+        <a href="https://www.facebook.com/khalil.abuhozah" target="_blank" style="color:#fff"><i class="fab fa-facebook"></i> فيسبوك</a>
+        <a href="https://x.com/abuhawzah" target="_blank" style="color:#fff"><i class="fab fa-x-twitter"></i> X</a>
+      </div>
+      <div style="text-align:center;margin-top:6px">جميع الحقوق محفوظة © 2024 - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-btn lb-close" id="lbClose" aria-label="إغلاق"><i class="fa fa-times"></i></button>
+    <div class="lb-controls">
+      <button class="lb-btn" id="prev"><i class="fa fa-chevron-right"></i></button>
+      <button class="lb-btn" id="next"><i class="fa fa-chevron-left"></i></button>
+    </div>
+    <div style="text-align:center">
+      <img id="lbImg" alt="">
+      <div class="lb-caption" id="lbCap"></div>
+    </div>
+  </div>
+
+<script>
+  // Filters
+  const filterBtns = document.querySelectorAll('#filters button');
+  const cards = [...document.querySelectorAll('.card')];
+  filterBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      filterBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c=>{
+        c.style.display = (f==='all' || c.dataset.cat===f) ? '' : 'none';
+      });
+    });
+  });
+
+  // Lightbox
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+  const btnPrev = document.getElementById('prev');
+  const btnNext = document.getElementById('next');
+  const btnClose = document.getElementById('lbClose');
+
+  let currentIndex = 0;
+  function openLB(i){
+    currentIndex = i;
+    const fig = cards[currentIndex];
+    lbImg.src = fig.querySelector('img').src;
+    lbImg.alt = fig.querySelector('img').alt;
+    lbCap.textContent = fig.querySelector('.overlay span').textContent;
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden','false');
+  }
+  function closeLB(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden','true');
+  }
+  function next(){ openLB( (currentIndex+1) % cards.length ); }
+  function prev(){ openLB( (currentIndex-1+cards.length) % cards.length ); }
+
+  cards.forEach((c,i)=> c.addEventListener('click',()=> openLB(i)));
+  btnClose.addEventListener('click', closeLB);
+  btnNext.addEventListener('click', next);
+  btnPrev.addEventListener('click', prev);
+  lb.addEventListener('click', e=>{ if(e.target===lb) closeLB(); });
+  window.addEventListener('keydown', e=>{
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') closeLB();
+    if(e.key==='ArrowLeft') next();
+    if(e.key==='ArrowRight') prev();
+  });
+</script>
+</body>
+</html>

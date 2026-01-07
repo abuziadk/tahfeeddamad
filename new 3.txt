@@ -1,0 +1,49 @@
+#include <ESP8266WiFi.h>
+#include <WiFiClientSecure.h>
+
+// عدّل البيانات حسب شبكتك:
+const char* ssid = "stc_wifi_7991";
+const char* password = "2aLm3D7T8hm";
+
+const char* telegramToken = "8059458818:AAF_GGkMay7RC73t5xX1r6z5mxJxKDVLVZM";
+const char* chat_id = "1037874961";
+
+const char* host = "api.telegram.org";
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.begin(ssid, password);
+  Serial.print("Connecting");
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("\nWiFi connected");
+
+  // إرسال أول رسالة
+  sendTelegramMessage("🚨 تم اكتشاف نشاط مشبوه على الشبكة!");
+}
+
+void loop() {
+  // تقدر هنا تضيف شروط معينة ترسل عند تحققها
+}
+
+void sendTelegramMessage(String message) {
+  WiFiClientSecure client;
+  client.setInsecure(); // بدون تحقق من الشهادة
+
+  if (!client.connect(host, 443)) {
+    Serial.println("Connection failed!");
+    return;
+  }
+
+  String url = "/bot" + String(telegramToken) + "/sendMessage?chat_id=" + chat_id + "&text=" + message;
+
+  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+               "Host: " + host + "\r\n" +
+               "Connection: close\r\n\r\n");
+
+  Serial.println("Message sent to Telegram!");
+}

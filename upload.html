@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رفع الملفات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 15px auto;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        progress {
+            display: block;
+            width: 100%;
+            margin: 15px 0;
+            height: 20px;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>رفع ملف النتائج</h1>
+        <form id="uploadForm">
+            <input type="file" id="pdfFile" name="pdfFile" accept="application/pdf" required>
+            <progress id="progressBar" value="0" max="100" style="display: none;"></progress>
+            <button type="submit">رفع الملف</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const fileInput = document.getElementById('pdfFile');
+            const progressBar = document.getElementById('progressBar');
+            const message = document.getElementById('message');
+
+            if (!fileInput.files.length) {
+                alert('يرجى اختيار ملف!');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('pdfFile', file);
+
+            progressBar.style.display = 'block';
+            progressBar.value = 0;
+            message.textContent = '';
+
+            try {
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/upload', true);
+
+                // تحديث شريط التقدم
+                xhr.upload.onprogress = (event) => {
+                    if (event.lengthComputable) {
+                        const percentComplete = (event.loaded / event.total) * 100;
+                        progressBar.value = percentComplete;
+                    }
+                };
+
+                // عند اكتمال الرفع
+                xhr.onload = () => {
+                    if (xhr.status === 200) {
+                        message.textContent = 'تم رفع الملف بنجاح!';
+                        message.style.color = '#4CAF50';
+                        progressBar.value = 100;
+                        setTimeout(() => location.reload(), 2000); // إعادة تحميل الصفحة
+                    } else {
+                        message.textContent = `فشل رفع الملف: ${xhr.responseText}`;
+                        message.style.color = 'red';
+                    }
+                };
+
+                // معالجة الأخطاء
+                xhr.onerror = () => {
+                    message.textContent = 'حدث خطأ أثناء الاتصال بالخادم.';
+                    message.style.color = 'red';
+                };
+
+                xhr.send(formData);
+            } catch (err) {
+                message.textContent = 'حدث خطأ غير متوقع.';
+                message.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>عداد التوقف عن التدخين</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            color: white;
+            padding: 50px;
+        }
+        #counter {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
+        img {
+            width: 300px;
+            margin-top: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>عداد التوقف عن التدخين</h1>
+    <div id="counter">0 يوم</div>
+    <button onclick="startCounter()">ابدأ العد</button>
+    <button onclick="enableNotifications()">تفعيل التنبيهات اليومية</button>
+    <img src="https://i.imgur.com/NVLqxzk.jpg" alt="حياة صحية بدون تدخين">
+
+    <script>
+        let counterElement = document.getElementById('counter');
+        let startDate;
+
+        function startCounter() {
+            if (!localStorage.getItem('quitDate')) {
+                startDate = new Date();
+                localStorage.setItem('quitDate', startDate.toISOString());
+            } else {
+                startDate = new Date(localStorage.getItem('quitDate'));
+            }
+            updateCounter();
+            setInterval(updateCounter, 86400000);
+        }
+
+        function updateCounter() {
+            let currentDate = new Date();
+            let difference = currentDate - startDate;
+            let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            counterElement.innerText = days + ' يوم';
+        }
+
+        function enableNotifications() {
+            if (Notification.permission === 'granted') {
+                scheduleNotification();
+            } else if (Notification.permission !== 'denied') {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        scheduleNotification();
+                    }
+                });
+            }
+        }
+
+        function scheduleNotification() {
+            setInterval(() => {
+                let currentDate = new Date();
+                let quitDate = new Date(localStorage.getItem('quitDate'));
+                let days = Math.floor((currentDate - quitDate) / (1000 * 60 * 60 * 24));
+                new Notification('💪 استمر!', {
+                    body: `لقد مضى ${days} يومًا على توقفك عن التدخين. فخورون بك! 👏`,
+                    icon: 'https://i.imgur.com/NVLqxzk.jpg'
+                });
+            }, 86400000); // كل 24 ساعة
+        }
+
+        if (localStorage.getItem('quitDate')) {
+            startDate = new Date(localStorage.getItem('quitDate'));
+            updateCounter();
+            setInterval(updateCounter, 86400000);
+        }
+    </script>
+</body>
+</html>

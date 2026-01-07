@@ -1,0 +1,68 @@
+from flask import Flask, request
+import requests
+
+app = Flask(__name__)
+
+BOT_TOKEN = '8059458818:AAF_GGkMay7RC73t5xX1r6z5mxJxKDVLVZM'
+CHAT_ID = '1037874961'
+
+@app.route('/alert', methods=['GET'])
+def handle_alert():
+    msg = "تم اكتشاف نشاط مشبوه على الشبكة!"
+    print(msg)
+    send_telegram(msg)
+    return "Alert received", 200
+
+def send_telegram(message):
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    data = {'chat_id': CHAT_ID, 'text': message}
+    requests.post(url, data=data)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
+	
+	
+	
+	
+	
+	
+	
+	
+	[Unit]
+Description=NetGuardian Flask Server
+After=network.target
+
+[Service]
+User=user
+WorkingDirectory=/home/user/netguardian
+Environment="PATH=/home/user/netguardian/venv/bin"
+ExecStart=/home/user/netguardian/venv/bin/python server.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+	
+	
+	curl -X POST http://192.168.8.254:8000/alert \
+     -H "Content-Type: application/json" \
+     -d '{"message": "اختبار يدوي من اللابتوب"}'
+
+	
+	
+	
+	
+	
+	
+	
+	
+	curl -X POST http://192.168.8.254:8000/alert \
+     -H "Content-Type: application/json" \
+     -d '{"message": "test from lap"}'
+	
+	
+	
+	
+	
+	
+	
