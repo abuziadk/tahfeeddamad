@@ -1,0 +1,204 @@
+:root{
+  --green:#0B6E4F;
+  --green2:#0A5F45;
+  --bg-gradient: linear-gradient(135deg,#0B6E4F,#0A5F45);
+  --card:#ffffff;
+  --text:#111;
+  --muted:#444;
+  --shadow:0 10px 26px rgba(0,0,0,.15);
+  --radius:16px;
+}
+
+/* ================= GLOBAL ================= */
+html,body{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:"Cairo","Tajawal",system-ui,-apple-system,Arial,sans-serif;
+  background: var(--bg-gradient);
+  color:var(--text);
+}
+
+/* ================= BANNER ================= */
+.image-header{
+  width:100%;
+  padding:14px;
+  box-sizing:border-box;
+}
+
+.image-header-inner{
+  max-width:1200px;
+  margin:auto;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:var(--green);
+  box-shadow:var(--shadow);
+  animation: fadeDown 1.2s ease;
+}
+
+.image-header-inner img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  max-height:400px; /* سطح المكتب */
+}
+
+@media (max-width:768px){
+  .image-header-inner img{
+    max-height:220px; /* الجوال */
+  }
+}
+
+@keyframes fadeDown{
+  from{opacity:0; transform:translateY(-10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* ================= NAVBAR (متناسق مع البنر) ================= */
+.navbar{
+  max-width:1100px;
+  margin:12px auto 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.22),
+    rgba(255,255,255,.12)
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow:
+    0 12px 26px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.35);
+  border:1px solid rgba(255,255,255,.25);
+}
+
+.navbar ul{
+  list-style:none;
+  margin:0;
+  padding:10px 12px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+}
+
+.navbar a{
+  color:#ffffff;
+  text-decoration:none;
+  padding:10px 18px;
+  font-weight:800;
+  border-radius:14px;
+  transition:all .25s ease;
+  position:relative;
+}
+
+/* Hover */
+.navbar a:hover{
+  background:rgba(255,255,255,.22);
+}
+
+/* Active */
+.navbar a.active{
+  background:rgba(255,255,255,.32);
+  box-shadow: inset 0 1px 4px rgba(0,0,0,.15);
+}
+
+/* ================= LAYOUT ================= */
+.wrap{
+  padding:14px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+}
+
+.card h2{
+  margin-top:0;
+  color:var(--green);
+  font-weight:800;
+}
+
+/* ================= FORMS ================= */
+input, select, textarea{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:14px;
+  box-sizing:border-box;
+  outline:none;
+}
+
+button{
+  padding:10px 14px;
+  border-radius:12px;
+  border:none;
+  background:var(--green);
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+}
+
+button:hover{
+  background:var(--green2);
+}
+
+/* ================= FOOTER ================= */
+footer{
+  max-width:1090px;
+  margin:14px auto 80px;
+  padding:14px;
+  background: rgba(255,255,255,.12);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  text-align:center;
+  font-size:14px;
+  color:#fff;
+  backdrop-filter: blur(6px);
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+.whatsapp-float{
+  position:fixed;
+  bottom:18px;
+  left:18px;
+  width:56px;
+  height:56px;
+  background:#25D366;
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  z-index:999;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.08);
+  box-shadow:0 12px 26px rgba(0,0,0,.3);
+}
+.breadcrumb{
+  max-width:1100px;
+  margin:6px auto 0;
+  padding:6px 14px;
+  color:#fff;
+  font-size:14px;
+}
+
+.breadcrumb a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+}
