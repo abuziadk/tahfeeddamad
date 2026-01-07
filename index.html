@@ -1,81 +1,171 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-  :root {
-    --green-dark:#004d40;
-    --green:#00796b;
-    --green-grad-start:#a5d6a7;
-    --green-grad-end:#1b5e20;
-    --gray-grad-start:#f7f7f7;
-    --gray-grad-end:#eceff1;
-  }
-  html,body{margin:0;padding:0;font-family:'Cairo',sans-serif;}
-  body{background: linear-gradient(180deg, var(--gray-grad-start), var(--gray-grad-end)); min-height:100vh;}
-  .header{
-    background: linear-gradient(135deg, var(--green-grad-start), var(--green-grad-end));
-    color:#fff; padding:16px 12px;
-  }
-  .header .wrap{max-width:1100px;margin:0 auto; display:flex; align-items:center; gap:16px;}
-  .header img{width:110px; height:auto; object-fit:contain;}
-  .title-box{display:flex; flex-direction:column; gap:4px}
-  .title-box h1{margin:0;font-size:1.4rem;letter-spacing:.2px}
-  .title-box p{margin:0;opacity:.9}
-  .navbar{
-    position: sticky; top:0; z-index:1000;
-    background: rgba(0, 77, 64, 0.95);
-    backdrop-filter: saturate(150%) blur(3px);
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-  }
-  .nav-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
-  .nav-wrap a{
-    color:#fff; text-decoration:none; padding:12px 14px; display:block; font-weight:700; border-radius:8px; transition:.2s;
-  }
-  .nav-wrap a:hover{background:#00695c}
-  .active{background:#00695c}
-  main{max-width:1100px;margin:10px auto; background:black; padding:24px; border-radius:14px; box-shadow:3 8px 18px rgba(1,0,0,.06)}
-  h2{color:#00695c;margin-top:0}
-  .footer{
-    margin-top:28px; background: var(--green-dark); color:#fff; padding:18px 12px;
-  }
-  .footer .wrap{max-width:1100px;margin:0 auto; display:grid; gap:10px}
-  .quick-links a{color:#fff; text-decoration:none; margin:0 8px}
-  .contact-line{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
-  .contact-line a{color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:6px}
-  .contact-line i{font-size:1.1rem}
-</style>
 
 <title>الصفحة الرئيسية - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</title>
+
+<style>
+:root {
+  --green-dark:#004d40;
+  --green:#00796b;
+  --gray-grad-start:#f7f7f7;
+  --gray-grad-end:#eceff1;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  font-family:'Cairo',sans-serif;
+}
+
+body{
+  background: linear-gradient(180deg, var(--gray-grad-start), var(--gray-grad-end));
+  min-height:100vh;
+}
+
+/* ===== البنر الجديد ===== */
+.banner{
+  width:100%;
+  background:#e8f5e9;
+  opacity:0;
+  animation: fadeBanner 1.2s ease-out forwards;
+}
+
+@keyframes fadeBanner{
+  from{opacity:0; transform:translateY(-12px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.banner img{
+  width:100%;
+  height:auto;
+  display:block;
+  max-height:260px;     /* سطح المكتب */
+  object-fit:contain;  /* بدون قص */
+}
+
+/* نسخة الجوال */
+@media (max-width:768px){
+  .banner img{
+    max-height:160px;
+  }
+}
+
+/* ===== شريط التنقل ===== */
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(0,77,64,.96);
+  backdrop-filter:blur(4px);
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+
+.nav-wrap{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  justify-content:center;
+}
+
+.nav-wrap a{
+  color:#fff;
+  text-decoration:none;
+  padding:12px 14px;
+  font-weight:700;
+  border-radius:8px;
+  transition:.2s;
+}
+
+.nav-wrap a:hover,
+.nav-wrap a.active{
+  background:#00695c;
+}
+
+/* ===== المحتوى ===== */
+main{
+  max-width:1100px;
+  margin:14px auto;
+  background:#fff;
+  padding:24px;
+  border-radius:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,.06);
+}
+
+h2{
+  color:#00695c;
+  margin-top:0;
+}
+
+/* ===== الفوتر ===== */
+.footer{
+  margin-top:28px;
+  background:var(--green-dark);
+  color:#fff;
+  padding:18px 12px;
+}
+
+.footer .wrap{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  gap:10px;
+}
+
+.quick-links a{
+  color:#fff;
+  text-decoration:none;
+  margin:0 8px;
+}
+
+.contact-line{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.contact-line a{
+  color:#fff;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+</style>
 </head>
+
 <body>
 
-<div class="header">
-  <div class="wrap">
-    <img src="images/bg2.png" alt="شعار المدرسة">
-    <div class="title-box">
-      <h1>مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</h1>
-      <p>بوابتك الإلكترونية لمتابعة كل جديد</p>
-    </div>
-    </div>
-      </div>
-<main>
-  <h2>مرحبًا بكم</h2>
+<!-- ===== البنر بدل الهيدر ===== -->
+<div class="banner">
+  <img src="images/banner.png" alt="بنر مدرسة تحفيظ ضمد الإبتدائية والمتوسطة">
+</div>
+
+<!-- ===== القائمة ===== -->
 <nav class="navbar">
   <div class="nav-wrap">
     <a class="active" href="index.html">الرئيسية</a>
-    <a class="" href="grades.html">الدرجات</a>
-    <a class="" href="about.html">عن المدرسة</a>
-    <a class="" href="activities.html">الأنشطة</a>
-    <a class="" href="gallery.html">معرض الصور</a>
-    <a class="" href="contact.html">اتصل بنا</a>
+    <a href="grades.html">الدرجات</a>
+    <a href="about.html">عن المدرسة</a>
+    <a href="activities.html">الأنشطة</a>
+    <a href="gallery.html">معرض الصور</a>
+    <a href="contact.html">اتصل بنا</a>
   </div>
 </nav>
 
+<main>
+  <h2>مرحبًا بكم</h2>
+  <p>نرحب بكم في البوابة الإلكترونية لمدرسة تحفيظ ضمد الإبتدائية والمتوسطة.</p>
 </main>
 
 <footer class="footer">
@@ -86,103 +176,17 @@
       <a href="grades.html">الدرجات</a> |
       <a href="contact.html">اتصل بنا</a>
     </div>
+
     <div class="contact-line">
       <span>👨‍💻 البرمجة والتصميم: م. خليل أبوحوزه</span>
-      <a href="https://wa.me/966548884252" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i> واتساب</a>
-      <a href="https://www.facebook.com/khalil.abuhozah" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i> فيسبوك</a>
-      <a href="https://x.com/abuhawzah" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i> X</a>
+      <a href="https://wa.me/966548884252" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a href="https://www.facebook.com/khalil.abuhozah" target="_blank"><i class="fab fa-facebook"></i> فيسبوك</a>
+      <a href="https://x.com/abuhawzah" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
     </div>
+
     <div>جميع الحقوق محفوظة &copy; 2024 - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</div>
   </div>
 </footer>
-<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-<script>
-
-(() => {
-  
-
- camera.position.set(0, 0, 3.5);
-camera.fov = 50;                // زاوية الرؤية (كبّرها لتوسيع المشهد)
-camera.updateProjectionMatrix();
-
-renderer.outputColorSpace = THREE.SRGBColorSpace;
-
-  // إضاءة ولون متناسق مع هوية الموقع
-  const light = new THREE.DirectionalLight(0xffffff, 1.1);
-  light.position.set(2, 3, 4);
-  scene.add(light);
-  scene.add(new THREE.AmbientLight(0xffffff, 0.45));
-
-  // مجسم 3D خفيف (عُقدة تورس) بلون أخضر المدرسة
-  const geo = new THREE.SphereGeometry(0.9, 94, 94);
-  const mat = new THREE.MeshStandardMaterial({ color: 0x00796b, metalness: 0.2, roughness: 0.25 });
-  const mesh = new THREE.Mesh(geo, mat);
-  mat.normalMap   = new THREE.TextureLoader().load('images/bg2.jpg');
-
-  mat.roughnessMap= new THREE.TextureLoader().load('images/bg.jpg');
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-
-  scene.add(mesh);
-
-  // نقاط خلفية خفيفة (نجوم بسيطة)
-  const starsGeo = new THREE.BufferGeometry();
-  const starCount = 250;
-  const positions = new Float32Array(starCount * 3);
-  for (let i=0; i<starCount*3; i++) positions[i] = (Math.random()-0.5)*12;
-  starsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  const stars = new THREE.Points(starsGeo, new THREE.PointsMaterial({ size: 0.015, color: 0xffffff }));
-  scene.add(stars);
-  
-  // تحريك بالفأرة/اللمس
-  let targetX = 0, targetY = 0;
-  function onMove(x, y) {
-    const rect = canvas.getBoundingClientRect();
-    const nx = (x - rect.left) / rect.width  - 0.5;
-    const ny = (y - rect.top)  / rect.height - 0.5;
-    targetX = nx * 0.8;
-    targetY = ny * 0.5;
-  }
-  window.addEventListener('mousemove', e => onMove(e.clientX, e.clientY), { passive:true });
-  window.addEventListener('touchmove', e => {
-    const t = e.touches[0]; if (t) onMove(t.clientX, t.clientY);
-  }, { passive:true });
-
-  // ريسايز
-  function resizeRendererToDisplaySize() {
-    const parent = canvas.parentElement;
-    const width = parent.clientWidth;
-    const height = parent.clientHeight;
-    const needResize = canvas.width !== width || canvas.height !== height;
-    if (needResize) {
-      renderer.setSize(width, height, false);
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-    }
-    return needResize;
-  }
-
-  // أنيميشن
-  let rafId;
-  function render() {
-    resizeRendererToDisplaySize();
-    mesh.rotation.x += 0.104 + (targetY - mesh.rotation.x) * 0.02;
-    mesh.rotation.y += 0.006 + (targetX - mesh.rotation.y) * 0.02;
-    stars.rotation.y += 0.0008;
-    renderer.render(scene, camera);
-    rafId = requestAnimationFrame(render);
-  }
-
-  // إيقاف أثناء التبويب المخفي لتوفير البطارية
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) cancelAnimationFrame(rafId);
-    else render();
-  });
-
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  render();
-})();
-
-</script>
 
 </body>
 </html>
