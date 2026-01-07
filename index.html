@@ -25,9 +25,18 @@ html,body{
 }
 
 body{
-  background: linear-gradient(180deg, var(--gray-grad-start), var(--gray-grad-end));
+  background:
+    linear-gradient(
+      180deg,
+      #e8f5e9 0%,     /* نفس لون خلفية البنر */
+      #f4faf6 180px, /* انتقال ناعم بعد البنر */
+      var(--gray-grad-start) 420px,
+      var(--gray-grad-end) 100%
+    );
   min-height:100vh;
 }
+
+
 
 /* ===== البنر الجديد ===== */
 .banner{
@@ -44,7 +53,7 @@ body{
 
 .banner img{
   width:100%;
-  height:auto;
+  height:500;
   display:block;
   max-height:260px;     /* سطح المكتب */
   object-fit:contain;  /* بدون قص */
@@ -94,17 +103,24 @@ body{
 /* ===== المحتوى ===== */
 main{
   max-width:1100px;
-  margin:14px auto;
-  background:#fff;
-  padding:24px;
-  border-radius:14px;
-  box-shadow:0 8px 18px rgba(0,0,0,.06);
+  margin:22px auto;
+  background:rgba(255,255,255,0.96);
+  padding:28px;
+  border-radius:18px;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.08),
+    0 2px 6px rgba(0,0,0,.04);
+  position:relative;
 }
 
+
 h2{
-  color:#00695c;
+  color:#004d40;
   margin-top:0;
+  font-weight:700;
+  letter-spacing:.3px;
 }
+
 
 /* ===== الفوتر ===== */
 .footer{
