@@ -8,7 +8,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>النتائج - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</title>
+  <title>الدرجات - مدرسة تحفيظ ضمد الإبتدائية والمتوسطة</title>
 
   <!-- الخط -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
@@ -55,21 +55,20 @@
 
 <!-- ===== BANNER ===== -->
 
-<div class="breadcrumb">
-  <a href="index.html">الرئيسية</a> › النتائج
-</div>
 <!-- ===== NAVBAR ===== -->
-
+<nav class="navbar">
+  <ul>
+    <li><a class="active" href="grades.html">النتائج</a></li>
+    
+  </ul>
+</nav>
 
 <!-- ===== CONTENT ===== -->
-
+<div class="wrap">
+  <div class="card">
 
     <h2>الاستعلام عن إشعار الدرجات</h2>
-
-    <p class="hint">
-      يرجى إدخال رقم الهوية الوطنية المكوّن من <strong>10 أرقام</strong>.
-    </p>
-
+<font color="white"
     <div class="form-row">
       <input type="text" id="studentId" placeholder="أدخل رقم الهوية الوطنية">
       <button onclick="searchCertificate()">
